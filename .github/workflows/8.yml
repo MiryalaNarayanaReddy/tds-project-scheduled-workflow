@@ -1,0 +1,37 @@
+name: Daily Commit
+
+on:
+  push:
+    branches:
+      - main  # Runs on push (first time)
+  schedule:
+    - cron: '30 18 * * *'  # Runs daily at 12:00 AM IST (6:30 PM UTC)
+  workflow_dispatch:  # Allows manual trigger
+
+permissions:
+  contents: write  # Grant write access to push changes
+
+jobs:
+  commit:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: miryala.narayanareddy@straive.com
+      run:
+        echo "Hello, world!"
+    - name: Checkout repository miryala.narayanareddy@straive.com
+      uses: actions/checkout@v2
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Set up Git
+      run: |
+        git config --global user.name "GitHub Actions"
+        git config --global user.email "miryala.narayanareddy@straive.com"
+
+    - name: Create a commit
+      run: |
+        echo "Daily update: $(date)" >> daily_commit.txt
+        git add daily_commit.txt
+        git commit -m "Daily commit by GitHub Actions"
+        git push
