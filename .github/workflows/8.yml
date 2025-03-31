@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: miryala@straive.com
+    - name: miryala.narayanareddy@straive.com
       run: |
         echo "Hello, world!"
     - name: Checkout repository
@@ -27,7 +27,7 @@ jobs:
     - name: Set up Git
       run: |
         git config --global user.name "GitHub Actions"
-        git config --global user.email "miryala@straive.com"
+        git config --global user.email "miryala.narayanareddy@straive.com"
 
     - name: Create a commit
       run: |
